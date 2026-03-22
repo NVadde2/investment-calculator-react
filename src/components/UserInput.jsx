@@ -9,6 +9,8 @@ export default function UserInput() {
         duration: 10
     });
 
+    const inputIsValid = Object.values(userInput).every(value => value > 0);
+
     function handleChange(event) {
         const { name, value } = event.target;
         setUserInput(prevInput => ({
@@ -42,7 +44,8 @@ export default function UserInput() {
                     </p>
                 </div>
             </section>
-            <Results input={userInput}/>
+            {!inputIsValid && <p className="error">Please enter valid positive numbers for all fields.</p>}
+            {inputIsValid && <Results input={userInput} />}
         </>
     );
 }
