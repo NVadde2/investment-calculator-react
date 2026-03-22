@@ -13,6 +13,7 @@ export default function UserInput() {
         const { name, value } = event.target;
         setUserInput(prevInput => ({
             ...prevInput,
+            // The "+" operator is used to convert the string value from the input field to a number, since event.target.value is always a string even when type="number" is used in the input field
             [name]: +value
         }));
     }
